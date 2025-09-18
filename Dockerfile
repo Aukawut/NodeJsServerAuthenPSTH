@@ -16,5 +16,6 @@ COPY . .
 # Expose app port
 EXPOSE 5900
 
+ENV PORT 5900
 # Start the app
 CMD ["npm", "start"]
