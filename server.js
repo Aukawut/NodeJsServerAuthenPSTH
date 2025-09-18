@@ -11,6 +11,12 @@ app.get('/', (req, res) => {
   
 })
 
+app.get("/pass",(req,res) => {
+  return res.status(200).json({
+    msg : "Ok"
+  })
+})
+
 app.listen(port, () => {
   console.log(`Server authen listening on port ${port}`)
 })
