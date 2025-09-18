@@ -1,13 +1,27 @@
 require('dotenv').config()
+const { v4: uuidv4 } = require("uuid");
 
 const express = require('express')
 const app = express()
 const port = process.env.PORT;
 
+
+app.use((req, res, next) => {
+  // If client didn’t send UUID, generate one
+  const incomingId = req.headers['x-request-id'];
+  req.id = incomingId ;
+  console.log("Request UUID:", req.id);
+  next();
+});
+
+
 app.get('/', (req, res) => {
-  return res.status(401).json({
-    msg  : "Blocked"
-  })
+  const token = req.query.token 
+
+    console.log(res)
+    return res.status(200).json({
+      id : `Hello, your request UUID is ${token}`
+    })
   
 })
 
