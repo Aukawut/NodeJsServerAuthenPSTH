@@ -26,7 +26,22 @@ app.get('/', (req, res) => {
 })
 
 app.get("/pass",(req,res) => {
-   console.log(res.header())
+  // Access headers
+  const realIp = req.headers["x-real-ip"];
+  const forwardedFor = req.headers["x-forwarded-for"];
+  const proto = req.headers["x-forwarded-proto"];
+  const requestId = req.headers["x-request-id"];
+  const clientIp = req.ip ;
+  const userAgent = req.headers["user-agent"]; 
+
+  console.log(`---- Date:${new Date()} ----`)
+  console.log("clientIp:", clientIp);
+  console.log("x-real-ip:", realIp);
+  console.log("x-forwarded-for:", forwardedFor);
+  console.log("x-forwarded-proto:", proto);
+  console.log("x-request-id:", requestId);
+  console.log("userAgent:", userAgent);
+
   return res.status(200).json({
     msg : "Ok"
   })
