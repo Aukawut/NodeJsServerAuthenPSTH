@@ -18,14 +18,15 @@ app.use((req, res, next) => {
 app.get('/', (req, res) => {
   const token = req.query.token 
 
-    console.log(res)
+    console.log(res.header())
     return res.status(200).json({
-      id : `Hello, your request UUID is ${token}`
+      id : `Hello, your request UUID is ${token}`,
     })
   
 })
 
 app.get("/pass",(req,res) => {
+   console.log(res.header())
   return res.status(200).json({
     msg : "Ok"
   })
